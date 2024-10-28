@@ -25,30 +25,42 @@ module.exports.run = async function({
       let page = 1;
       let start = (page - 1) * pages;
       let end = start + pages;
-      let helpMessage = `Command List:\n\n`;
+      let helpMessage = `🌟𝗠𝗬 𝗔𝗩𝗔𝗜𝗟 𝗖𝗠𝗗 𝗟𝗜𝗦𝗧🌟:\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
-        helpMessage += `\t${i + 1}. 「 ${prefix}${commands[i]} 」\n`;
+        helpMessage += `\t${i + 1}.🌠
+    ╭─╼━━━━━━━━╾─╮
+         ${prefix}${commands[i]} 
+    ╰─━━━━━━━━━╾─╯\n`;
       }
-      helpMessage += '\nEvent List:\n\n';
+      helpMessage += '\n🌟𝗠𝗬 𝗘𝗩𝗘𝗡𝗧 𝗟𝗜𝗦𝗧🌟:\n\n';
       eventCommands.forEach((eventCommand, index) => {
-        helpMessage += `\t${index + 1}. 「 ${prefix}${eventCommand} 」\n`;
+        helpMessage += `\t${index + 1}.🌟
+   ╭─╼━━━━━━━━╾─╮
+        ${prefix}${eventCommand} 
+   ╰─━━━━━━━━━╾─╯\n`;
       });
-      helpMessage += `\nPage ${page}/${Math.ceil(commands.length / pages)}. To view the next page, type '${prefix}help page number'. To view information about a specific command, type '${prefix}help command name'.`;
+      helpMessage += `\n➪𝗣𝗔𝗚𝗘 ${page}/${Math.ceil(commands.length / pages)}. 𝗧𝗢 𝗩𝗜𝗘𝗪 𝗧𝗛𝗘 𝗡𝗘𝗫𝗧 𝗣𝗔𝗚𝗘, 𝗧𝗬𝗣𝗘 '${prefix}𝗛𝗘𝗟𝗣 𝗣𝗔𝗚𝗘 𝗡𝗨𝗠𝗕𝗘𝗥'. 𝗧𝗢 𝗩𝗜𝗘𝗪 𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡 𝗔𝗕𝗢𝗨𝗧 𝗔 𝗦𝗣𝗘𝗖𝗜𝗙𝗜𝗖 𝗖𝗢𝗠𝗠𝗔𝗡𝗗, 𝗧𝗬𝗣𝗘 '${prefix}𝗛𝗘𝗟𝗣 𝗖𝗢𝗠𝗠𝗔𝗡𝗗 𝗡𝗔𝗠𝗘'.`;
       api.sendMessage(helpMessage, event.threadID, event.messageID);
     } else if (!isNaN(input)) {
       const page = parseInt(input);
       const pages = 20;
       let start = (page - 1) * pages;
       let end = start + pages;
-      let helpMessage = `Command List:\n\n`;
+      let helpMessage = `🌟𝗠𝗬 𝗔𝗩𝗔𝗜𝗟 𝗖𝗠𝗗 𝗟𝗜𝗦𝗧🌟:\n\n`;
       for (let i = start; i < Math.min(end, commands.length); i++) {
-        helpMessage += `\t${i + 1}. 「 ${prefix}${commands[i]} 」\n`;
+        helpMessage += `\t${i + 1}.🌠
+╭─╼━━━━━━━━╾─╮
+     ${prefix}${commands[i]} 
+╰─━━━━━━━━━╾─╯\n`;
       }
-      helpMessage += '\nEvent List:\n\n';
+      helpMessage += '\n🌟𝗠𝗬 𝗘𝗩𝗘𝗡𝗧 𝗟𝗜𝗦𝗧🌟:\n\n';
       eventCommands.forEach((eventCommand, index) => {
-        helpMessage += `\t${index + 1}. 「 ${prefix}${eventCommand} 」\n`;
+        helpMessage += `\t${index + 1}.🌟
+╭─╼━━━━━━━━╾─╮
+     ${prefix}${eventCommand}
+╰─━━━━━━━━━╾─╯\n`;
       });
-      helpMessage += `\nPage ${page} of ${Math.ceil(commands.length / pages)}`;
+      helpMessage += `\n➪𝗣𝗔𝗚𝗘 ${page} of ${Math.ceil(commands.length / page)}`;
       api.sendMessage(helpMessage, event.threadID, event.messageID);
     } else {
       const command = [...Utils.handleEvent, ...Utils.commands].find(([key]) => key.includes(input?.toLowerCase()))?.[1];
@@ -91,7 +103,7 @@ module.exports.handleEvent = async function({
     messageID,
     body
   } = event;
-  const message = prefix ? 'This is my prefix: ' + prefix : "Sorry i don't have prefix";
+  const message = prefix ? '𝗧𝗵𝗶𝘀 𝗶𝘀 𝗺𝘆 𝗽𝗿𝗲𝗳𝗶𝘅: ' + prefix : "𝗦𝗼𝗿𝗿𝘆 𝗶 𝗱𝗼𝗻'𝘁 𝗵𝗮𝘃𝗲 𝗽𝗿𝗲𝗳𝗶𝘅";
   if (body?.toLowerCase().startsWith('prefix')) {
     api.sendMessage(message, threadID, messageID);
   }
